@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage[brazil]{babel} %  portuguese of Brazil
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fullpage} %remove margin
+
+\usepackage{framed} %to draw header
+
+%include commands of exercises and counters
+\input{myCommands}
+
+
+\newcommand{\Disciplina}{Disciplina}
+\newcommand{\Titulo}{Name of the Homework}
+\newcommand{\Subtitulo}{Subtitle of the Homework}
+\newcommand{\Prof}{Name of the teacher}
+
+\newcommand{\Autor}{Students Name (other information)}
+\newcommand{\Data}{\today }
+\newcommand{\Local}{Departament-University}
+
+
+\title{ \Titulo}
+\author{\Autor}
+\date{\Data}
+
+
+\begin{document}
+
+
+\input{header} %personalized header
+%\maketitle %uncomment for classical title
+
+%Example of exercise
+\exercise{About your favorite band:}
+    
+    %Defining a subexercise
+    \subexercise{Name}
+        %Students can answer the question here
+        AC/DC 
+        
+    %another subexercise
+    \subexercise{Best album}
+        My teacher is great!
+
+    %another subexercise
+    \subexercise{Foundation year}
+        
+        
+Don't forget to break lines and always give credits to your references
+    
+    
+    
+
+\end{document} 

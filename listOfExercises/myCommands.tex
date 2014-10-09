@@ -1,0 +1,23 @@
+
+
+%\newenvironment{exercise}[3][Exercício]{\textbf{#1 #2}  #3  \\} {\vspace{32pt}}
+
+\newcounter{exercise}[section]
+\newcounter{subexercise}[exercise]
+
+
+
+
+\newcommand{\exercise}[1]{
+    \stepcounter{exercise} %atualiza contador do comando
+    \vspace{16pt}\noindent %espaço anterior
+    %\textsf{\textbf{\arabic{exercise}) #1}} %negrito com outra fonte
+    \textbf{\arabic{exercise})} #1 %negrito sem mudar fonte
+}
+\newcommand{\subexercise}[1]{
+    \stepcounter{subexercise} %atualiza contador do comando
+    \vspace{8pt}    %espaço
+    \noindent
+    %\textsf{\textbf{\alph{subexercise}) #1:}} %negrito trocando a fonte
+    \textbf{\alph{subexercise})} #1 %negrito sem trocar fonte
+} 
