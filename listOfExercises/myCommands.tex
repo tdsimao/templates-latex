@@ -21,3 +21,10 @@
     %\textsf{\textbf{\alph{subexercise}) #1:}} %negrito trocando a fonte
     \textbf{\alph{subexercise})} #1 %negrito sem trocar fonte
 } 
+
+\newcounter{step}[section]
+\newcommand{\step}[0]{
+    \stepcounter{step} %atualiza contador do comando
+    \vspace{12pt}\noindent %espaço anterior
+    \textbf{Passo \arabic{step}:}
+}
