@@ -32,3 +32,22 @@
     \vspace{12pt}\noindent %espaço anterior
     \textbf{Passo \arabic{step}:}
 }
+
+
+% Template to define actions with parameters, preconditions and effects
+\newcommand{\actionParPreEf}[4]{
+
+    \noindent Action( \textbf{#1} (#2),\\
+    \indent Pre: #3 \\
+    \indent Ef: #4
+}
+
+% Template to define actions with parameters, preconditions, positive effects and negative effects
+\newcommand{\actionParPreEfEf}[5]{
+
+    \noindent Action( \textbf{#1} (#2),\\
+    \indent Pre: #3 \\
+    \indent Ef$^+$: #4 \\
+    \indent Ef$^-$: #5
+}
+

@@ -80,4 +80,21 @@ For example:
 \step First we must have an equation
 \[f(x)=0\]
 
+
+
+\section{Action Examples}
+
+\actionParPreEf{Comer}     % nome
+{Bolo}             % parametros
+{Ter(Bolo)} % precondições
+{$\lnot$Ter(Bolo) $\land$ Comido(Bolo)}        % efeitos
+
+\actionParPreEfEf{Comer} %name
+{Bolo} %parameters
+{Ter(Bolo)} %preconditions
+{Comido(Bolo)} % positive effects
+{Ter(Bolo)} %negative effects
+
+
 \end{document} 
+
