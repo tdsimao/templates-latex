@@ -24,6 +24,8 @@
 \author{\Autor}
 \date{\Data}
 
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,automata,backgrounds,petri}
 
 \begin{document}
 
@@ -104,6 +106,70 @@ For example:
     {Ter(Bolo)}    %negative effects
 
 \end{verbatim}
+
+
+\section{Example of use of tikz}
+
+\begin{center}\scalebox{.75}{
+\begin{tikzpicture}[node distance=6cm,>=stealth',bend angle=45,auto]
+  \tikzstyle{node}=[rectangle,thick,draw=blue!75,fill=blue!20,minimum size=5mm, font=\ttfamily ]
+  \tikzstyle{red node}=[node,draw=red!75,fill=red!20]
+  \tikzstyle{arrow}=[rectangle,thick,draw=black!75,
+              fill=black!20,minimum size=2mm]
+  \tikzstyle{prec} =[above=2.5mm, font=\ttfamily]
+  \tikzstyle{eff} =[below=2.5mm, font=\ttfamily]
+  
+  \begin{scope}
+    % First net
+    \node [node] (a0)           {$a_0$};
+        \node [eff]  (e00) at (a0)  {Clear(C)};
+        \node [eff]  (e01) at (e00) {Clear(B)};
+        \node [eff]  (e02) at (e01) {On(C,A)};
+        \node [eff]  (e03) at (e02) {OnTable(B)};
+        \node [eff]  (e04) at (e03) {OnTable(A)};
+      
+    \node [node] (a1) [right of=a0] {Stack(B,C)};
+        \node [prec] (p10) at (a1)  {OnTable(B)};
+        \node [prec] (p11) at (p10) {Clear(B)};
+        \node [prec] (p12) at (p11) {Clear(C)};
+    
+        \node [eff]  (e10) at (a1) {On(B,C)};
+        \node [eff]  (e11) at (e10) {$\lnot$Clear(C)};
+        \node [eff]  (e12) at (e11) {$\lnot$OnTable(B)};
+        
+    \draw
+            (e00.east) -- +(1,0) |- (p12.west)
+            (e01.east) -- +(2,0) |- (p11.west)
+            (e03.east) -- +(3,0) |- (p10.west)
+    ;
+    
+    
+    \node [node] (aInf) [right of=a1] {$a_\infty$};
+        \node [prec, red] (pI1) at (aInf) {On(A,B)};
+        \node [prec] (pI2) at (pI1) {On(B,C)};
+    
+    \path[->, dashed]
+        (a0.east) edge []  node {} (a1.west)
+        (a1.east) edge []  node {} (aInf.west)
+    ;
+    \draw
+        (e10.east) -- +(2,0) |- (pI2.west)
+    ;
+    
+
+  \end{scope}
+
+  \begin{pgfonlayer}{background}
+    \filldraw [line width=4mm,join=round,black!10]
+      (e04.south  -| e01.west)  rectangle (p12.north  -| pI2.east)
+      ;
+  \end{pgfonlayer}
+\end{tikzpicture}
+
+}
+\end{center}
+
+
 
 \end{document} 
 
